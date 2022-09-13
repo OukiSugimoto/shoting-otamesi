@@ -30,7 +30,7 @@ public:
 
 	float enemyTimer = 1800.0f;
 private:
-	float posX, posY, speed;
+	float posX, posY, enemySpeed;
 	bool death = false;
 	bool move = true;
 	int HP;

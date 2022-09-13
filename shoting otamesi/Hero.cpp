@@ -3,13 +3,13 @@
 void Hero::Initialize() {
 	posX = 320.0f;
 	posY = 700.0f;
-	speed = 5.0f;
+	heroSpeed = 5.0f;
 	death = false;
 	move = false;
 	HP = 100;
 	max = 440.0f;
 	min = 200.0f;
-	MoveTimer = 1800.0f;
+	MoveTimer = 900.0f;
 	index = 0;
 	animeTime = 0;
 }
@@ -25,22 +25,22 @@ void Hero::Update() {
 
 void Hero::Manual(char* key) {
 		if (key[KEY_INPUT_A]) {
-			posX -= speed;
+			posX -= heroSpeed;
 		}
 		else if (key[KEY_INPUT_D]) {
-			posX += speed;
+			posX += heroSpeed;
 		}
 }
 
 void Hero::Auto() {
 	if (move == false) {
-		posX += speed;
+		posX += heroSpeed;
 		//ˆÚ“®
-		if (posX + 64 > 600) {
-			speed = -5.0f;
+		if (posX + 32 > 600) {
+			heroSpeed = -5.0f;
 		}
 		if (posX < 0) {
-			speed = 5.0f;
+			heroSpeed = 5.0f;
 		}
 	}
 }

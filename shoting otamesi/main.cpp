@@ -23,10 +23,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	char oldkeys[256] = { 0 };// 1ループ(フレーム)前のキーボード情報
 
 	int speed = 0;
-	float changeTime = 1800.0f;
+	float changeTime = 900.0f;
 
 	bool moveFlage = false;
-
+	
 	Enemy *enemy = new Enemy;
 	Hero* hero = new Hero;
 
@@ -50,8 +50,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		changeTime--;
 		
 		if (changeTime == 0) {
-			moveFlage = true;
-			changeTime = 1800.0f;
+			if (moveFlage == false) {
+				moveFlage = true;
+			}
+			else if (moveFlage == true) {
+				moveFlage = false;
+			}
+			changeTime = 900.0f;
 		}
 
 		if (moveFlage == true) {
@@ -70,7 +75,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		DrawGraph(0 , speed, backGraph, true);
 		DrawGraph(0 ,-800 + speed,backGraph2,true);
 
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "timer = %5.0f", changeTime);
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "timer = %3.0f", changeTime);
 		enemy->Draw();
 		
 		hero->Draw();

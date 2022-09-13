@@ -27,10 +27,10 @@ public:
 	/// </summary>
 	void Manual(char* key);
 
-	float MoveTimer = 1800.0f;
+	float MoveTimer = 900.0f;
 
 private:
-	float posX, posY, speed;
+	float posX, posY, heroSpeed;
 	bool death = false;
 	bool move = true;
 	int HP;

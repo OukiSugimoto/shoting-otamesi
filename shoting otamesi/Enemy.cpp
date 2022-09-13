@@ -3,7 +3,7 @@
 void Enemy::Initialize() {
 	posX = 320.0f;
 	posY = 160.0f;
-	speed = 5.0f;
+	enemySpeed = 5.0f;
 	death = false;
 	move = true;
 	HP = 100;
@@ -26,21 +26,21 @@ void Enemy::Update() {
 
 void Enemy::Manual(char* key) {
 		if (key[KEY_INPUT_A]) {
-			posX -= speed;
+			posX -= enemySpeed;
 		}
 		else if (key[KEY_INPUT_D]) {
-			posX += speed;
+			posX += enemySpeed;
 		}
 }
 
 void Enemy::Auto() {
-		posX += speed;
+		posX += enemySpeed;
 		//ˆÚ“®
 		if (posX + 64 > 600) {
-			speed = -5.0f;
+			enemySpeed = -5.0f;
 		}
 		if (posX < 0) {
-			speed = 5.0f;
+			enemySpeed = 5.0f;
 		}
 }
 
@@ -55,5 +55,4 @@ void Enemy::Draw() {
 		
 	}
 	DrawGraph(posX, posY, enemyGraph[index], TRUE);
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "timer = %d", enemyTimer);
 }
